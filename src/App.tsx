@@ -1,9 +1,12 @@
-import './App.css'
+// import './App.css'
+import Home from './pages/home'
 
 const App = () => {
 
   return (
-    <>APP</>
+    <>
+      <Home />
+    </>
   )
 }
 
