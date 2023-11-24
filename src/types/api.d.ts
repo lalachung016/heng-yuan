@@ -4,4 +4,10 @@ declare namespace Api {
       items: Common.Video[]
     }
   }
+
+  namespace ForYouList {
+    type Response = {
+      items: Common.Video[]
+    }
+  }
 }

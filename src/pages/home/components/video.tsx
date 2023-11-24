@@ -1,7 +1,9 @@
 import ReactPlayer from 'react-player'
 import styled from 'styled-components'
 
-type VideoProps = Common.Video
+type VideoProps = Common.Video & {
+  isActive: boolean
+}
 
 
 const Wrapper = styled.div`
@@ -16,13 +18,25 @@ const StyledVideo = styled(ReactPlayer)`
   }
 `
 
-const Video = ({ play_url }: VideoProps) => {
+// TODO: 嘗試利用透明度變化做出 cover
+// const Cover = styled.div<{ isActive: boolean }>`
+//   width: 100vw;
+//   height: 100vh;
+//   opacity: ${ props => props.isActive ? 1 : 0 };
+
+//   & img {
+//     height: 100%;
+//     width: 100;
+//   }
+// `
+
+const Video = ({ play_url, isActive }: VideoProps) => {
 
   return (
     <Wrapper>
       <StyledVideo
         controls={true}
-        playing={true}
+        playing={isActive}
         width="100vw"
         height="100vh"
         url={play_url}
