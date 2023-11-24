@@ -1,5 +1,7 @@
 declare namespace Api {
   namespace FollowingList {
-    type Response = any
+    type Response = {
+      items: Common.Video[]
+    }
   }
 }
