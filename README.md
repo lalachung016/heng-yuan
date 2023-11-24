@@ -1,8 +1,6 @@
-# React + Vite
+# 其他加分題目
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+如果影片想要設計試看功能，請問怎麼設計比較好。
+舉例 一個影片長30mins，但試看只能看前5mins
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+以我專案中用的套件ReactPlayer為例，可用onProgress屬性監聽播放進度，試看時間結束後強制跳轉回前面的秒數。
