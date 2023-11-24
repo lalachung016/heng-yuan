@@ -26,7 +26,8 @@ const Home = () => {
       const isScrollingUp = scrollTop < prevScrollTop
 
       // 計算目前應該顯示的影片索引
-      const newIndex = isScrollingUp ? Math.ceil(scrollTop / videoHeight) : Math.floor(scrollTop / videoHeight)
+      // TODO: 只判斷當下滾動方向不太準確，滑到一半往回滑的時候會有bug
+      const newIndex = isScrollingUp ? Math.ceil(scrollTop / videoHeight) : Math.floor(scrollTop / videoHeight)  
       setCurrentIndex(newIndex)
 
       // 更新前一個滾動位置
@@ -55,15 +56,20 @@ const Home = () => {
     <Container>
       <ModeGroup>
         <Mode
-         isactive={mode === 'FOLLOWING' ? 1 : 0}
-        onClick={() => setMode('FOLLOWING')}
+          isactive={mode === 'FOLLOWING' ? 1 : 0}
+          onClick={() => setMode('FOLLOWING')}
         >FOLLOWING</Mode>
         <Mode isactive={mode === 'FORYOU'? 1 : 0} onClick={() => setMode('FORYOU')}>FOR YOU</Mode>
       </ModeGroup>
 
       <VideosContainer onScroll={handleScroll} ref={containerRef}>
         {
-          activeList.map((item, index) => <Video key={index} {...item} isActive={currentIndex === index} />)
+          activeList.map((item, index) =>
+            <Video
+              key={index}
+              {...item}
+              isActive={currentIndex === index}
+            />)
         }
       </VideosContainer>
     </Container>

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import ReactPlayer from 'react-player'
 import styled from 'styled-components'
 
@@ -32,9 +33,16 @@ const StyledVideo = styled(ReactPlayer)`
 
 const Video = ({ play_url, isActive }: VideoProps) => {
 
+  // TODO: 嘗試做影片失焦重置，isActive邏輯待修正
+  const videoRef = useRef() as any
+  useEffect(() => {
+    if(!isActive && videoRef) videoRef.current?.seekTo(0)
+  }, [isActive, videoRef])
+
   return (
     <Wrapper>
       <StyledVideo
+        ref={videoRef}
         controls={true}
         playing={isActive}
         width="100vw"
